@@ -8,7 +8,10 @@
 
 # Opis projekta
 ## Kratki opis
-Ovdje ide opis projekta
+Aplikacija će imati 5 ekrana, služit će unosu pročitanih knjiga.
+Prvi ekran: ima dva botuna, prvi je za pregled popisa unesenih knjiga, drugi je za unos pročitane knjiga.
+Unos pročitane knjige nas navodi na slijedeći ekran, ekran Unos, a to je ekran unosa. Na taj ekran unosimo detalje vezane za knjigu, a to su: Naziv knjige, kategorija, naša ocjena, godina u kojoj smo pročitali knjigu i ukoliko nam je ona jedan od favorita možemo i to dodati.
+Sa prvog ekrana možemo ić na ekran Popisa, tu nam se nalazi cijeli popis unesenih knjiga, sa tog ekrana možemo ići na ekran Unosa pa dodati još knjiga. Taj ekran nam sadrži i mogućnost prikaza samo popisa favorita i filter. Ukoliko se odlučimo na filter idemo na ekran Filter, tamo možemo knjige filtrirati po kategorija, ocjenama i godini kada smo je pročitali. Također, sa ekrana Popis, odabirom neke knjige možemo viditi njene detalje, odnosno idemo na ekran Detalji.
 
 ## Popis funkcionalnosti
 1. a
