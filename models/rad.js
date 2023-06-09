@@ -1,6 +1,6 @@
 class Rad {
   constructor(id, naslov, pisac, kategorija, godina, ocjena){
-    this.id = id
+    this.id = id;
     this.naslov = naslov;
     this.pisac = pisac;
     this.kategorija = kategorija;

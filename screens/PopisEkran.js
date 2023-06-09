@@ -20,7 +20,7 @@ const PopisEkran = ({ route, navigation }) => {
     return (
       <ListaElement
         onPress={() => navigation.navigate('Detalji', { id: podaci.item.id })}
-        natpis={podaci.item.student}
+        natpis={podaci.item.naslov}
       />
     );
   };

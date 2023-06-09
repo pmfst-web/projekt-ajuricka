@@ -14,6 +14,7 @@ import PocetniEkran from './screens/PocetniEkran';
 import PopisEkran from './screens/PopisEkran';
 import DetaljiEkran from './screens/DetaljiEkran';
 import UnosEkran from './screens/UnosEkran';
+import ZeljeEkran from './screens/ZeljeEkran';
 import Boje from './constants/Boje';
 const Stack = createNativeStackNavigator();
 
@@ -59,7 +60,7 @@ function App() {
             name="Naslovna"
             component={PocetniEkran}
             options={{
-              title: 'Evidencija radova',
+              title: 'Moje knjige',
             }}
           />
           <Stack.Screen
@@ -110,6 +111,7 @@ function App() {
             }}
           />
           <Stack.Screen name="Unos" component={UnosEkran} />
+          <Stack.Screen name="Zelje" component={ZeljeEkran} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

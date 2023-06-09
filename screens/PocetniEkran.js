@@ -8,22 +8,25 @@ const PocetniEkran = ({ navigation }) => {
     <SafeAreaView style={stil.container}>
 
       <ImageBackground
-        style={{ flex: 1 }}  
+        style={stil.centerContentStyle}  
         source={require('../assets/Knjige.jpg')} >
           <View style={stil.container}>
             <Tipka
               style={stil.titleStyle}
-              title="Popis radova"
+              title="Pročitane knjige"
               onPress={() => navigation.navigate('Popis')}
             />
             <Tipka
               style={stil.titleStyle} 
-              title="Unos radova"
+              title="Unesi pročitanu knjigu"
               onPress={() => navigation.navigate('Unos')}
             />
-            <View style={stil.centerContentStyle}>
-              <Image  source={require('../assets/Knjige.jpg')}  />
-            </View>
+            <Tipka
+              style={stil.titleStyle} 
+              title="Knjige koje želim čitati"
+              onPress={() => navigation.navigate('Zelje')}
+            />
+            
           </View>
         
       </ImageBackground>
@@ -41,9 +44,11 @@ const stil = StyleSheet.create({
     fontSize: 28,
     fontWeight: 'bold',
     textAlign: 'center',
-    padding: 10,
+    padding: 25,
+    justifyContent: "space-around"
   },
   centerContentStyle: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
