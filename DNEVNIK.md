@@ -10,3 +10,6 @@ Preuzela sam kod (vježba10 kraj) sa vježbi te ga prilagodila svom projektu. Pr
 ### Kratki opis promjena
 Dodala sam ekran želja.
 
+## 9.6.2023.
+### Kratki opis promjena
+Dodala sam ekran UnosŽelja. uredila sam logiku unosa pročitanih knjiga. 

@@ -15,10 +15,11 @@ import PopisEkran from './screens/PopisEkran';
 import DetaljiEkran from './screens/DetaljiEkran';
 import UnosEkran from './screens/UnosEkran';
 import ZeljeEkran from './screens/ZeljeEkran';
+import UnosZeljeEkran from './screens/UnosZeljeEkran';
 import Boje from './constants/Boje';
 const Stack = createNativeStackNavigator();
 
-import { RADOVI } from './data/testpodaci';
+import { BOOKS } from './data/testpodaci';
 
 const ucitajFontove = () => {
   return Font.loadAsync({
@@ -89,8 +90,8 @@ function App() {
             name="Detalji"
             component={DetaljiEkran}
             options={({ route, navigation }) => {
-              const idOsobe = Number(route.params.id);
-              const rad = RADOVI.find((r) => r.id === idOsobe);
+              const idKnjige = Number(route.params.id);
+              const rad = BOOKS.find((r) => r.id === idKnjige);
               return {
                 headerTitle: rad?.student,
                 headerRight: () => {
@@ -111,7 +112,31 @@ function App() {
             }}
           />
           <Stack.Screen name="Unos" component={UnosEkran} />
-          <Stack.Screen name="Zelje" component={ZeljeEkran} />
+          <Stack.Screen  
+            name='Zelje'
+            component={ZeljeEkran} 
+            options={({ route, navigation }) => {
+              return {
+                headerRight: () => {
+                  return (
+                    <TouchableOpacity
+                      onPress={() => navigation.navigate('UnosZelje')}>
+                      <View>
+                        <MaterialIcons
+                          name="note-add"
+                          size={26}
+                          color={Boje.Primarna}
+                        />
+                      </View>
+                    </TouchableOpacity>
+                  );
+                },
+              };
+            }}/>
+          <Stack.Screen 
+            name="UnosZelje" 
+            component={UnosZeljeEkran} 
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

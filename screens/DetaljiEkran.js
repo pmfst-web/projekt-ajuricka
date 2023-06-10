@@ -3,6 +3,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import {promjenaFavorita} from '../store/actions/radovi'
 import { View, Text, StyleSheet, Button } from 'react-native';
 import Boje from '../constants/Boje';
+import Tipke from '../components/Tipke'
 
 
 const DetaljiEkran = ({ route, navigation }) => {
@@ -23,39 +24,47 @@ const DetaljiEkran = ({ route, navigation }) => {
       <View style={stil.tablica}>
         <View style={stil.redak}>
           <View style={stil.stupac}>
-            <Text>ID Rada</Text>
+            <Text>Ime pisca</Text>
           </View>
           <View style={stil.stupac}>
-            <Text style={stil.bold}>{rad.id}</Text>
-          </View>
-        </View>
-        <View style={stil.redak}>
-          <View style={stil.stupac}>
-            <Text>Ime osobe</Text>
-          </View>
-          <View style={stil.stupac}>
-            <Text style={{...stil.ime}}>{rad.student}</Text>
+            <Text style={{...stil.bold}}>{rad.pisac}</Text>
           </View>
         </View>
         <View style={stil.redak}>
           <View style={stil.stupac}>
-            <Text>Naslov rada</Text>
+            <Text>Naslov knjige</Text>
           </View>
           <View style={stil.stupac}>
-            <Text style={stil.bold}>{rad.naslov}</Text>
-          </View>
-        </View>
-        <View style={stil.redak}>
-          <View style={stil.stupac}>
-            <Text>Vrsta:</Text>
-          </View>
-          <View style={stil.stupac}>
-            <Text style={stil.bold}>{rad.vrsta === 'D' ? 'Diplomski' : 'Završni'}</Text>
+            <Text style={stil.ime}>{rad.naslov}</Text>
           </View>
         </View>
         <View style={stil.redak}>
           <View style={stil.stupac}>
-            <Button title="Promjena favorita" onPress={akcijaFavorit}/>
+            <Text>Žanr:</Text>
+          </View>
+          <View style={stil.stupac}>
+            <Text style={stil.bold}>{rad.kategorija}</Text>
+          </View>
+        </View>
+        <View style={stil.redak}>
+          <View style={stil.stupac}>
+            <Text>Godina kad je pročitana:</Text>
+          </View>
+          <View style={stil.stupac}>
+            <Text style={stil.bold}>{rad.godina}</Text>
+          </View>
+        </View>
+        <View style={stil.redak}>
+          <View style={stil.stupac}>
+            <Text>Ocjena</Text>
+          </View>
+          <View style={stil.stupac}>
+            <Text style={stil.bold}>{rad.ocjena}</Text>
+          </View>
+        </View>
+        <View style={stil.redak}>
+          <View style={stil.stupac}>
+            <Tipke title="Promjena favorita" onPress={akcijaFavorit}/>
           </View>
         </View>
       </View>
@@ -71,14 +80,14 @@ const stil = StyleSheet.create({
     backgroundColor: Boje.Pozadina,
   },
   tablica: {
-    width: '80%',
+    width: '85%',
     flex: 1,
   },
   redak: {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-around',
-    height: 50,
+    height: 35,
     paddingVertical: 0,
     marginVertical: 15,
   },
@@ -89,7 +98,8 @@ const stil = StyleSheet.create({
   },
   ime:{
     fontFamily: "Corinthia",
-    fontSize: 34
+    fontSize: 20,
+    alignItems: 'center',
   },
   bold:{
     fontWeight: "bold",

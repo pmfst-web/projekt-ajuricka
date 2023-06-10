@@ -1,4 +1,4 @@
-class Rad {
+class Book {
   constructor(id, naslov, pisac, kategorija, godina, ocjena){
     this.id = id;
     this.naslov = naslov;
@@ -10,4 +10,4 @@ class Rad {
   }
 }
 
-export default Rad
+export default Book

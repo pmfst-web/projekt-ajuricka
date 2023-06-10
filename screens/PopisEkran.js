@@ -10,7 +10,7 @@ import {
 import Boje from '../constants/Boje';
 import ListaElement from '../components/ListaElemenata';
 import { useSelector } from 'react-redux';
-import { RADOVI } from '../data/testpodaci';
+import { BOOKS } from '../data/testpodaci';
 
 const PopisEkran = ({ route, navigation }) => {
   const radoviPrikaz = useSelector((state) => state.radovi.filterRadovi);
@@ -32,16 +32,6 @@ const PopisEkran = ({ route, navigation }) => {
           showsVerticalScrollIndicator={false}
           style={{ margin: 5 }}
           data={radoviPrikaz}
-          renderItem={prikazElelementa}
-          numColumns={1}
-        />
-      </View>
-      <View style={stil.lista}>
-      <Text>FAVORITI</Text>
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          style={{ margin: 5 }}
-          data={radoviFavorit}
           renderItem={prikazElelementa}
           numColumns={1}
         />

@@ -1,36 +1,39 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button, Image, SafeAreaView, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, Button, Image, SafeAreaView, ImageBackground, ScrollView} from 'react-native';
 import Tipka from '../components/Tipke'
 import Boje from '../constants/Boje'
 
 const PocetniEkran = ({ navigation }) => {
   return (
+    
     <SafeAreaView style={stil.container}>
-
-      <ImageBackground
-        style={stil.centerContentStyle}  
-        source={require('../assets/Knjige.jpg')} >
-          <View style={stil.container}>
-            <Tipka
-              style={stil.titleStyle}
-              title="Pročitane knjige"
-              onPress={() => navigation.navigate('Popis')}
-            />
-            <Tipka
-              style={stil.titleStyle} 
-              title="Unesi pročitanu knjigu"
-              onPress={() => navigation.navigate('Unos')}
-            />
-            <Tipka
-              style={stil.titleStyle} 
-              title="Knjige koje želim čitati"
-              onPress={() => navigation.navigate('Zelje')}
-            />
-            
-          </View>
-        
-      </ImageBackground>
+      <ScrollView vertical={true} style={{flex: 1}}>
+        <ImageBackground
+          style={stil.centerContentStyle}  
+          source={require('../assets/Knjige.jpg')} >
+            <View style={stil.container}>
+              <Tipka
+                style={stil.titleStyle}
+                title="Pročitane knjige"
+                onPress={() => navigation.navigate('Popis')}
+              />
+              <Tipka
+                style={stil.titleStyle} 
+                title="Unesi pročitanu knjigu"
+                onPress={() => navigation.navigate('Unos')}
+              />
+              <Tipka
+                style={stil.titleStyle} 
+                title="Knjige koje želim čitati"
+                onPress={() => navigation.navigate('Zelje')}
+              />
+              
+            </View>
+          
+        </ImageBackground>
+       </ScrollView>
     </SafeAreaView>
+   
   );
 };
 
@@ -40,6 +43,7 @@ const stil = StyleSheet.create({
     flex: 1,
     padding: 10,
   },
+  
   titleStyle: {
     fontSize: 28,
     fontWeight: 'bold',
