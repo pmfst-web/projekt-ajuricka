@@ -7,54 +7,58 @@ const PocetniEkran = ({ navigation }) => {
   return (
     
     <SafeAreaView style={stil.container}>
-      <ScrollView vertical={true} style={{flex: 1}}>
-        <ImageBackground
+      <ImageBackground
           style={stil.centerContentStyle}  
           source={require('../assets/Knjige.jpg')} >
-            <View style={stil.container}>
-              <Tipka
-                style={stil.titleStyle}
-                title="Pročitane knjige"
-                onPress={() => navigation.navigate('Popis')}
-              />
-              <Tipka
-                style={stil.titleStyle} 
-                title="Unesi pročitanu knjigu"
-                onPress={() => navigation.navigate('Unos')}
-              />
-              <Tipka
-                style={stil.titleStyle} 
-                title="Knjige koje želim čitati"
-                onPress={() => navigation.navigate('Zelje')}
-              />
-              
-            </View>
+        <ScrollView vertical={true} style={stil.ekran}>
           
-        </ImageBackground>
-       </ScrollView>
+              <View style={stil.kontrole}>
+                <Tipka                 
+                  title="Pročitane knjige"
+                  onPress={() => navigation.navigate('Popis')}
+                />
+                <Tipka
+                  title="Unesi pročitanu knjigu"
+                  onPress={() => navigation.navigate('Unos')}
+                />
+                <Tipka
+                  title="Knjige koje želim čitati"
+                  onPress={() => navigation.navigate('Zelje')}
+                />
+                
+              </View>
+            
+        
+        </ScrollView>
+      </ImageBackground>
     </SafeAreaView>
    
   );
 };
 
 const stil = StyleSheet.create({
-  
+   ekran: {    
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1
+  },
   container: {
     flex: 1,
-    padding: 10,
+    padding: 5
   },
   
-  titleStyle: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    padding: 25,
-    justifyContent: "space-around"
+ kontrole:{
+    flex: 1,
+    padding: 5,
+    alignItems: "center",
+    justifyContent: "space-around",
+    height: 250
   },
   centerContentStyle: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    resizeMode: 'cover'
   },
 });
 

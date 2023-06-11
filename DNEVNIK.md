@@ -12,4 +12,8 @@ Dodala sam ekran želja.
 
 ## 9.6.2023.
 ### Kratki opis promjena
-Dodala sam ekran UnosŽelja. uredila sam logiku unosa pročitanih knjiga. 
+Dodala sam ekran UnosŽelja. Uredila sam logiku unosa pročitanih knjiga. 
+
+## 10.6.2023.
+### Kratki opis promjena
+Na ekranu UnosŽelja sam uredila logiku unosa novih knjiga.

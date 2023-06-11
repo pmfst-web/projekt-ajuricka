@@ -27,7 +27,8 @@ const stil = StyleSheet.create({
   },
   naslov:{
     color: Boje.Primarna,
-    fontFamily: "Baloo"
+    fontFamily: "Baloo",
+    fontWeight: "bold"
   }
 });
 

@@ -8,14 +8,14 @@ import Tipke from '../components/Tipke'
 
 const DetaljiEkran = ({ route, navigation }) => {
 
-  const idOsobe = Number(route.params.id);
+  const idOKnjige = Number(route.params.id);
   const sviRadovi = useSelector(state => state.radovi.radovi)
-  const rad = sviRadovi.find((r) => r.id === idOsobe);
+  const rad = sviRadovi.find((r) => r.id === idKnjige);
 
   const dispatch = useDispatch()
 
   const akcijaFavorit = () =>{
-    dispatch(promjenaFavorita(idOsobe))
+    dispatch(promjenaFavorita(idKnjige))
   }
   
 

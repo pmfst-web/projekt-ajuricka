@@ -93,7 +93,7 @@ function App() {
               const idKnjige = Number(route.params.id);
               const rad = BOOKS.find((r) => r.id === idKnjige);
               return {
-                headerTitle: rad?.student,
+                headerTitle: rad?.naslov,
                 headerRight: () => {
                   return (
                     <TouchableOpacity
@@ -111,9 +111,12 @@ function App() {
               };
             }}
           />
-          <Stack.Screen name="Unos" component={UnosEkran} />
+          <Stack.Screen 
+            name="Unos" 
+            component={UnosEkran} 
+          />
           <Stack.Screen  
-            name='Zelje'
+            name="Zelje"
             component={ZeljeEkran} 
             options={({ route, navigation }) => {
               return {
@@ -136,6 +139,7 @@ function App() {
           <Stack.Screen 
             name="UnosZelje" 
             component={UnosZeljeEkran} 
+
           />
         </Stack.Navigator>
       </NavigationContainer>
