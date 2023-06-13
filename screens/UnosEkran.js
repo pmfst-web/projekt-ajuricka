@@ -30,6 +30,9 @@ const UnosEkran = ({navigation}) => {
 
   handleGodinaChange = (text) => {
     const numericValue = text.replace(/[^0-9]/g, '');
+    if(numericValue !== '' && parseInt(numericValue) > 2023){
+      return;
+    }
     setGodina(numericValue);
   };
 
@@ -46,33 +49,39 @@ const UnosEkran = ({navigation}) => {
     <View style={stil.ekran}>
       <Text>Naslov knjige:</Text>
       <View style={stil.inputView}>
-        <TextInput
+        <TextInput style={stil.input}
           value={naslov}
           onChangeText={text => setNaslov(text)}
         />
       </View>
       <Text>Pisac:</Text>
       <View style={stil.inputView}>
-        <TextInput
+        <TextInput style={stil.input}
           value={pisac}
           onChangeText={text => setPisac(text)}
         />
       </View>
       <Text>Kategorija:</Text>
       <View style={stil.inputView}>
-        <Picker
+        <Picker style={stil.input}
           selectedValue={kategorija}
           onValueChange={(itemValue) => setKategorija(itemValue)}
         >
-          <Picker.Item label="" value="" />
-          <Picker.Item label="Horor" value="horor" />
-          <Picker.Item label="Romantični" value="romance" />
-          <Picker.Item label="Triler" value="triller" />
+          <Picker.Item label="All" value="" />
+          <Picker.Item label="Drama" value="drama" />
+          <Picker.Item label="Ljubavna" value="ljubavna" />
+          <Picker.Item label="Komedija" value="komedija" />
+          <Picker.Item label="Kriminalistički" value="krimi" />
+          <Picker.Item label="Misterija" value="misterija" />
+          <Picker.Item label="Poezija" value="poezija" />
+          <Picker.Item label="Fantazija" value="fantazija" />
+          <Picker.Item label="Knjiga za mlade" value="mladi" />
+          <Picker.Item label="Knjiga za djecu" value="djeca" />
         </Picker>
       </View>
       <Text>Godina čitanja:</Text>
       <View style={stil.inputView}>
-        <TextInput
+        <TextInput style={stil.input}
           value={godina}
           keyboardType="numeric"
           onChangeText={handleGodinaChange}
@@ -80,7 +89,7 @@ const UnosEkran = ({navigation}) => {
       </View>
       <Text>Ocjena knjige:</Text>
       <View style={stil.inputView}>
-        <TextInput
+        <TextInput style={stil.input}
           value={ocjena}
           onChangeText={handleOcjenaChange}
         />
@@ -105,9 +114,14 @@ const stil = StyleSheet.create({
     backgroundColor: Boje.Naglasak1,
     borderRadius: 30,
     width: "70%",
-    height: 30,
+    height: 40,
     marginBottom: 20,
     alignItems: "center",
+  },
+  input: {
+    padding: 10,
+    fontSize: 16,
+    borderColor: '#CCCCCC'
   },
 });
 

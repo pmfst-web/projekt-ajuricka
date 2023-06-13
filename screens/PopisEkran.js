@@ -62,40 +62,47 @@ const PopisEkran = ({ navigation }) => {
   return (
     <View style={stil.ekran}>
       <View style={stil.lista}>
-        <Text>Kategorija: </Text>
-          <Picker
-            selectedValue={kategorija}
-            onValueChange={(itemValue) => onKategorijaChange(itemValue)}
-          >
-            <Picker.Item label="All" value="" />
-            <Picker.Item label="Horor" value="horor" />
-            <Picker.Item label="Romantični" value="romance" />
-            <Picker.Item label="Triler" value="triller" />
-          </Picker>
-        <Text>Godina: </Text>
-        <View style={stil.inputView}>
-          <TextInput
-            value={godina}
-            keyboardType="numeric"
-            onChangeText={handleGodinaChange}
+        
+          <Text>Kategorija: </Text>
+            <Picker style={stil.filterK}
+              selectedValue={kategorija}
+              onValueChange={(itemValue) => onKategorijaChange(itemValue)} >
+              <Picker.Item label="All" value="" />
+              <Picker.Item label="Drama" value="drama" />
+              <Picker.Item label="Ljubavna" value="ljubavna" />
+              <Picker.Item label="Komedija" value="komedija" />
+              <Picker.Item label="Kriminalistički" value="krimi" />
+              <Picker.Item label="Misterija" value="misterija" />
+              <Picker.Item label="Poezija" value="poezija" />
+              <Picker.Item label="Fantazija" value="fantazija" />
+              <Picker.Item label="Knjiga za mlade" value="mladi" />
+              <Picker.Item label="Knjiga za djecu" value="djeca" />
+            </Picker>
+          <Text>Godina: </Text>
+          <View style={stil.filterB}>
+            <TextInput
+              value={godina}
+              keyboardType="numeric"
+              onChangeText={handleGodinaChange}
+            />
+          </View>
+          <Text>Ocjena: </Text>
+          <View style={stil.filterB}>
+            <TextInput
+              value={ocjena}
+              keyboardType="numeric"
+              onChangeText={handleOcjenaChange}
+            />
+          </View>
+        
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            style={{ margin: 5 }}
+            data={radovi}
+            renderItem={prikazElelementa}
+            numColumns={1}
           />
         </View>
-        <Text>Ocjena: </Text>
-        <View style={stil.inputView}>
-          <TextInput
-            value={ocjena}
-            keyboardType="numeric"
-            onChangeText={handleOcjenaChange}
-          />
-        </View>
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          style={{ margin: 5 }}
-          data={radovi}
-          renderItem={prikazElelementa}
-          numColumns={1}
-        />
-      </View>
     </View>
   );
 };
@@ -113,6 +120,18 @@ const stil = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
   },
+  filterK: {
+    alignItems: 'center',
+    padding: 5,
+    fontSize: 16,
+    borderColor: '#CCCCCC'
+  },
+  filterB: {
+    padding: 5,
+    fontSize: 16,
+    borderColor: '#CCCCCC',
+    backgroundColor: "white"
+  }
 });
 
 export default PopisEkran;
