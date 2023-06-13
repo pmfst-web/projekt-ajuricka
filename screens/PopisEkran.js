@@ -1,26 +1,60 @@
-import * as React from 'react';
+import {useState, useEffect} from 'react';
 import {
   View,
   Text,
   StyleSheet,
   FlatList,
-  TouchableOpacity,
+  TextInput
 } from 'react-native';
-
+import {Picker} from '@react-native-community/picker';
 import Boje from '../constants/Boje';
 import ListaElement from '../components/ListaElemenata';
 import { useSelector } from 'react-redux';
-import { BOOKS } from '../data/testpodaci';
+import {useDispatch} from 'react-redux'
+import {filterKategorije, filterGodine, filterOcjene} from '../store/actions/radovi'
 
-const PopisEkran = ({ route, navigation }) => {
+const PopisEkran = ({ navigation }) => {
+  const dispatch = useDispatch();
   const radoviPrikaz = useSelector((state) => state.radovi.filterRadovi);
-  const radoviFavorit = useSelector((state) => state.radovi.favoritRadovi);
+  const [radovi, setRadovi] = useState(radoviPrikaz);
+  const [kategorija, setKategorija] = useState('');
+  const [godina, setGodina] = useState('');
+  const [ocjena, setOcjena] = useState('');
+  
+  useEffect(() => {
+    setRadovi(radoviPrikaz);
+  }, [radoviPrikaz])
+
+  const onKategorijaChange = (itemValue) => {
+    setKategorija(itemValue);
+    setGodina("");
+    setOcjena("");
+    dispatch(filterKategorije(itemValue));
+  }
+
+  handleGodinaChange = (text) => {
+    const numericValue = text.replace(/[^0-9]/g, '');
+    setGodina(numericValue);
+    setKategorija("");
+    setOcjena("");
+    dispatch(filterGodine(text));
+  };
+
+  handleOcjenaChange = (text) => {
+    const numericValue = text.replace(/[^0-9]/g, '');
+    setOcjena(numericValue);
+    setGodina("");
+    setKategorija("");
+    dispatch(filterOcjene(text));
+  };
 
   const prikazElelementa = (podaci) => {
     return (
       <ListaElement
         onPress={() => navigation.navigate('Detalji', { id: podaci.item.id })}
-        natpis={podaci.item.naslov}
+        id={podaci.item.id}
+        naslov={podaci.item.naslov}
+        favorit={podaci.item.favorit}
       />
     );
   };
@@ -28,10 +62,36 @@ const PopisEkran = ({ route, navigation }) => {
   return (
     <View style={stil.ekran}>
       <View style={stil.lista}>
+        <Text>Kategorija: </Text>
+          <Picker
+            selectedValue={kategorija}
+            onValueChange={(itemValue) => onKategorijaChange(itemValue)}
+          >
+            <Picker.Item label="All" value="" />
+            <Picker.Item label="Horor" value="horor" />
+            <Picker.Item label="Romantični" value="romance" />
+            <Picker.Item label="Triler" value="triller" />
+          </Picker>
+        <Text>Godina: </Text>
+        <View style={stil.inputView}>
+          <TextInput
+            value={godina}
+            keyboardType="numeric"
+            onChangeText={handleGodinaChange}
+          />
+        </View>
+        <Text>Ocjena: </Text>
+        <View style={stil.inputView}>
+          <TextInput
+            value={ocjena}
+            keyboardType="numeric"
+            onChangeText={handleOcjenaChange}
+          />
+        </View>
         <FlatList
           showsVerticalScrollIndicator={false}
           style={{ margin: 5 }}
-          data={radoviPrikaz}
+          data={radovi}
           renderItem={prikazElelementa}
           numColumns={1}
         />

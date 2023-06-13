@@ -1,23 +1,12 @@
-import React, {useCallback, useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux'
-import {promjenaFavorita} from '../store/actions/radovi'
+import React from 'react';
+import {useSelector} from 'react-redux'
 import { View, Text, StyleSheet, Button } from 'react-native';
 import Boje from '../constants/Boje';
-import Tipke from '../components/Tipke'
-
 
 const DetaljiEkran = ({ route, navigation }) => {
-
   const idOKnjige = Number(route.params.id);
   const sviRadovi = useSelector(state => state.radovi.radovi)
   const rad = sviRadovi.find((r) => r.id === idKnjige);
-
-  const dispatch = useDispatch()
-
-  const akcijaFavorit = () =>{
-    dispatch(promjenaFavorita(idKnjige))
-  }
-  
 
   return (
     <View style={stil.ekran}>
@@ -60,11 +49,6 @@ const DetaljiEkran = ({ route, navigation }) => {
           </View>
           <View style={stil.stupac}>
             <Text style={stil.bold}>{rad.ocjena}</Text>
-          </View>
-        </View>
-        <View style={stil.redak}>
-          <View style={stil.stupac}>
-            <Tipke title="Promjena favorita" onPress={akcijaFavorit}/>
           </View>
         </View>
       </View>

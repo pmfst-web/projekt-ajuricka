@@ -1,6 +1,5 @@
 import  React, {useState} from 'react';
 import { View, Text, StyleSheet, TextInput, RadioButton, Button, TouchableOpacity } from 'react-native';
-import { Ionicons } from "@expo/vector-icons";
 import Boje from '../constants/Boje';
 import Tipka from '../components/Tipke';
 import { ZELJE } from '../data/testpodacizelje';
@@ -10,8 +9,6 @@ const UnosZeljeEkran = ({route, navigation}) => {
   const [naslov, setNaslov] = useState('');
   const [pisac, setPisac] = useState('');
 
-
-
   const dodajNovi = () => {
      ZELJE.push(new Zelje(ZELJE.length, naslov, pisac))
      navigation.navigate('Zelje')
@@ -19,8 +16,6 @@ const UnosZeljeEkran = ({route, navigation}) => {
 
   return (
     <View style={stil.ekran}>
-      
-      
       <Text>Naslov knjige:</Text>
       <View style={stil.inputView}>
         <TextInput

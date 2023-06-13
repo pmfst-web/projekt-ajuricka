@@ -1,11 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button, Image, SafeAreaView, ImageBackground, ScrollView} from 'react-native';
+import { View,  StyleSheet, SafeAreaView, ImageBackground, ScrollView} from 'react-native';
 import Tipka from '../components/Tipke'
-import Boje from '../constants/Boje'
 
 const PocetniEkran = ({ navigation }) => {
   return (
-    
     <SafeAreaView style={stil.container}>
       <ImageBackground
           style={stil.centerContentStyle}  
@@ -25,10 +23,7 @@ const PocetniEkran = ({ navigation }) => {
                   title="Knjige koje želim čitati"
                   onPress={() => navigation.navigate('Zelje')}
                 />
-                
               </View>
-            
-        
         </ScrollView>
       </ImageBackground>
     </SafeAreaView>

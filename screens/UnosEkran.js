@@ -1,28 +1,49 @@
-import  React, {useState} from 'react';
-import { View, Text, StyleSheet, TextInput, RadioButton, Button, TouchableOpacity } from 'react-native';
-import { Ionicons } from "@expo/vector-icons";
+import {useState, useEffect} from 'react';
+import { View, Text, StyleSheet, TextInput } from 'react-native';
+import {Picker} from '@react-native-community/picker';
 import Boje from '../constants/Boje';
 import Tipka from '../components/Tipke';
 import { BOOKS } from '../data/testpodaci';
 import Book from '../models/book';
 
-const UnosEkran = ({route, navigation}) => {
+const UnosEkran = ({navigation}) => {
   const [naslov, setNaslov] = useState('');
   const [pisac, setPisac] = useState('');
   const [kategorija, setKategorija] = useState('');
   const [godina, setGodina] = useState('');
   const [ocjena, setOcjena] = useState('');
+  const [disabled, setDisabled] = useState(true);
 
+  useEffect(() => {
+    if (naslov !== "" && pisac !== "" && kategorija !== "" && godina !== "" && ocjena !== "") {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+  }, [naslov, pisac, kategorija, godina, ocjena])
 
   const dodajNovi = () => {
-     BOOKS.push(new Book(BOOKS.length, naslov, pisac, kategorija, godina, ocjena))
+    if (disabled) return;
+     BOOKS.push(new Book(BOOKS.length, naslov, pisac, kategorija, godina, ocjena, false))
      navigation.navigate('Popis')
+  };
+
+  handleGodinaChange = (text) => {
+    const numericValue = text.replace(/[^0-9]/g, '');
+    setGodina(numericValue);
+  };
+
+  handleOcjenaChange = (text) => {
+    const numericValue = text.replace(/[^0-9]/g, '');
+    if (numericValue !== '' && (parseInt(numericValue) > 10 || parseInt(numericValue) < 1)) {
+      return;
+    }
+
+    setOcjena(numericValue);
   };
 
   return (
     <View style={stil.ekran}>
-      
-      
       <Text>Naslov knjige:</Text>
       <View style={stil.inputView}>
         <TextInput
@@ -39,28 +60,35 @@ const UnosEkran = ({route, navigation}) => {
       </View>
       <Text>Kategorija:</Text>
       <View style={stil.inputView}>
-        <TextInput
-          value={kategorija}
-          onChangeText={text => setKategorija(text)}
-        />
+        <Picker
+          selectedValue={kategorija}
+          onValueChange={(itemValue) => setKategorija(itemValue)}
+        >
+          <Picker.Item label="" value="" />
+          <Picker.Item label="Horor" value="horor" />
+          <Picker.Item label="Romantični" value="romance" />
+          <Picker.Item label="Triler" value="triller" />
+        </Picker>
       </View>
       <Text>Godina čitanja:</Text>
       <View style={stil.inputView}>
         <TextInput
           value={godina}
-          onChangeText={text => setGodina(text)}
+          keyboardType="numeric"
+          onChangeText={handleGodinaChange}
         />
       </View>
       <Text>Ocjena knjige:</Text>
       <View style={stil.inputView}>
         <TextInput
           value={ocjena}
-          onChangeText={text => setOcjena(text)}
+          onChangeText={handleOcjenaChange}
         />
       </View>
       <Tipka
           title="Unesi"
           onPress={dodajNovi}
+          disabled={disabled}
         />
     </View>
   );

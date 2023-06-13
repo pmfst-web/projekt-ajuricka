@@ -4,7 +4,7 @@ import Boje from '../constants/Boje'
 
 const Tipka = (props) => {
   return (
-    <TouchableOpacity onPress={props.onPress}>
+    <TouchableOpacity onPress={props.onPress} disabled={props.disabled}>
       <View style={{...stil.tipka, ...props.style}}>
         <Text style={stil.naslov}>{props.title}</Text>
       </View>
@@ -30,6 +30,12 @@ const stil = StyleSheet.create({
     fontFamily: "Baloo",
     fontWeight: "bold"
   }
+  disabled: {
+    color: Boje.Primarna,
+    fontFamily: "Baloo",
+    fontWeight: "bold",
+    opacity: 0.5
+    }
 });
 
 export default Tipka;

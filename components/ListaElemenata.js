@@ -1,18 +1,29 @@
-import * as React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Boje from '../constants/Boje';
-import { Foundation } from '@expo/vector-icons';
+import {useDispatch} from 'react-redux'
+import {promjenaFavorita} from '../store/actions/radovi'
+import {MaterialIcons} from '@expo/vector-icons'
 
 const ListaElement = (props) => {
+  const dispatch = useDispatch()
+
+  const akcijaFavorit = () =>{
+    dispatch(promjenaFavorita(props.id))
+  }
+  
   return (
       <TouchableOpacity style={{alignItems: "center"}}
         onPress={props.onPress}>
         <View style={{ ...stil.tipka, ...props.style }}>
           <View style={stil.ime}>
-            <Text style={stil.naslov}>{props.natpis}</Text>
+            <Text style={stil.naslov}>{props.naslov}</Text>
+            {props.pisac && <Text style={{fontStyle: "italic"}}>, {props.pisac}</Text>}
           </View>
-          <View style={stil.ikona}>
-            <Foundation name="magnifying-glass" size={16} color={Boje.Bijela} />
+          <View style={stil.redak}>
+          {props.favorit !== undefined && 
+            <View style={stil.stupac}>
+              <MaterialIcons name={props.favorit ? "star" : "star-border"} size={26} color={Boje.Primarna} onPress={akcijaFavorit} />
+            </View>}
           </View>
         </View>
       </TouchableOpacity>
@@ -47,11 +58,8 @@ const stil = StyleSheet.create({
     ellipsizeMode: 'tail',
     flex: 1,
     padding: 5,
-  },
-  ikona: {
-    width: '20%',
-    alignItems: 'center',
-  },
+    flexDirection: 'row',
+  }
 });
 
 export default ListaElement;

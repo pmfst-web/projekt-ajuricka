@@ -1,23 +1,19 @@
 import * as React from 'react';
 import {
   View,
-  Text,
   StyleSheet,
   FlatList,
-  TouchableOpacity,
 } from 'react-native';
-
 import Boje from '../constants/Boje';
 import ListaElement from '../components/ListaElemenata';
-import { useSelector } from 'react-redux';
 import { ZELJE } from '../data/testpodacizelje';
 
 const ZeljeEkran = ({ route, navigation }) => {
-  
   const prikazElelementa = (podaci) => {
     return (
       <ListaElement
         natpis={podaci.item.naslov}
+        pisac={podaci.item.pisac}
       />
     );
   };

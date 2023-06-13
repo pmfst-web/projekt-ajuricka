@@ -17,3 +17,10 @@ Dodala sam ekran UnosŽelja. Uredila sam logiku unosa pročitanih knjiga.
 ## 10.6.2023.
 ### Kratki opis promjena
 Na ekranu UnosŽelja sam uredila logiku unosa novih knjiga.
+
+## 12.6.2023.
+### Kratki opis promjena
+Pocetak | Kraj
+------- | ----
+17:00   | 22:00
+Dodala sam redux (reducer za favorite, filter kategorije, ocjene i godine), validaciju za unos nove knjige (godinai ocjena moraju biti broj), promjenila kategoriju da je dropdown umjesto unosa teksta.
